@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nutrición</title>
+    <meta charset="utf-8"/>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Allerta' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/invie.css" />
+  </head>
+  <body>
+    <header id="header" class="header background"> <!-- header -->
+      <div class="contenedor">
+        <nav class="menu"> <!-- menu -->
+          <ul>
+            <li>
+              <a href="index.html">Inicio</a>
+            </li>
+            <li>
+              <a href="nosotros.html">Nosotros</a>
+            </li>
+            <li>
+              <a href="clientes.html">Clientes</a>
+            </li>
+            <li>
+              <a href="contactanos.html">Contáctanos</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+    <section id="guitarras" class="guitarras contenedor"> <!-- guitarras -->
+      <h2>¿Quienes Somos?</h2><!-- titulo -->
+      <article class="guitarra"> <!-- servicios 1 -->
+        <img class="derecha-b" src="images/sobre-nosotros.png" alt="Guitarra Invie Acustica" width="317"/>
+        <div class="contenedor-guitarra-a">
+          <p>
+            Apple es una empresa joven, fundada en el año 2017. Su equipo directivo está formado por Rosario Huanca Gonza y Carmen Luque, ambas con una amplia experiencia en el campo de la nutrición y la farmacología.
+          </p>
+
+          <p>El equipo de trabajo de Apple es multidisciplinar, en él participan distintos profesionales del ámbito de la salud: nutricionistas, psicólogos, enfermeras, psicopedagogos…
+          </p>
+
+          <p>Rosario Huanca Gonza y Carmen Luque, directoras de Apple han participado como ponentes y moderadores en numerosas Jornadas y Congresos científicos.
+          </p>
+        </div>
+      </article>
+    </section>    
+
+    <footer class="footer">
+      <div class="contenedor">
+        <div class="contacto">
+          <img src="images/logo-blanco.png" alt="logotipo blanco"/>
+          <a href="tel:926589484"><strong>Telefono</strong> <span>926589484</span></a>
+          <a href="mailto:rosario@nutricionista.com"><strong>E-mail</strong> <span>rosario@nutricionista.com</span></a>
+        </div>
+        <form class="formulario">
+          <div class="col1">
+            <label for="nombre">Nombre</label>
+            <input type="text" required id="nombre" name="nombre"/>
+            <label for="email">E-mail</label>
+            <input type="email" required id="email" name="email"/>
+            <label for="sexo">Sexo</label>
+            <div class="sexo">
+              <label for="mujer">
+                <input type="radio" id="mujer" checked name="sexo" value="mujer"> mujer
+              </label>
+              <label for="hombre">
+                <input type="radio" id="hombre" name="sexo" value="hombre"> hombre
+              </label>
+            </div>
+            <label for="interes">Intereses</label>
+            <div class="intereses">              
+              <label for="cotizacion">
+                <input type="checkbox" checked id="cotizacion" name="intereses" value="cotizacion"> Cotización
+              </label>
+              <label for="opinion">
+                <input type="checkbox" id="opinion" name="intereses" value="opinion"> Opinion
+              </label>
+            </div>
+          </div>
+          <div class="col2">
+            <label for="comentarios">Comentarios</label>
+            <textarea name="comantarios" id="comentarios" cols="30" rows="7"></textarea>
+            <input type="submit" value="Enviar" class="button"/>
+          </div>
+        </form>
+      </div>
+    </footer>
+  </body>
+</html>

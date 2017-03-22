@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nutrición</title>
+    <meta charset="utf-8"/>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Allerta' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/invie.css" />
+
+    <script type="text/javascript">
+    var recetame = function(){
+      var a1_f1 = parseFloat(document.getElementById('a1-f1').value);
+      var a1_f2 = parseFloat(document.getElementById('a1-f2').value);
+      var a1_f3 = parseFloat(document.getElementById('a1-f3').value);
+      var a2_f1 = parseFloat(document.getElementById('a2-f1').value);
+      var a2_f2 = parseFloat(document.getElementById('a2-f2').value);
+      var a2_f3 = parseFloat(document.getElementById('a2-f3').value);
+      var a3_f1 = parseFloat(document.getElementById('a3-f1').value);
+      var a3_f2 = parseFloat(document.getElementById('a3-f2').value);
+      var a3_f3 = parseFloat(document.getElementById('a3-f3').value);
+      var r4_f1 = parseFloat(document.getElementById('r4-f1').value);
+      var r4_f2 = parseFloat(document.getElementById('r4-f2').value);
+      var r4_f3 = parseFloat(document.getElementById('r4-f3').value);
+      var sumar = 0;
+      var tabla = [[a1_f1,a1_f2,a1_f3],
+                    [a2_f1,a2_f2,a2_f3],
+                    [a3_f1,a3_f2,a3_f3]];
+      var rec = [r4_f1,r4_f2,r4_f3];
+      var res_tabla = tabla;
+      var res_final = [0,0,0];
+      for (var i=0;i<3;i++){
+        sumar = 0.0;
+        for (var j=0;j<3;j++){
+          sumar += tabla[j][i];
+        }
+
+        for (var j=0;j<3;j++){
+          res_tabla[j][i] = tabla[j][i] * rec[i] / sumar;          
+        }
+      }
+
+      for (var i=0;i<3;i++){
+        for (var j=0;j<3;j++){
+          res_final[i] += res_tabla[i][j];
+        }
+      }
+
+      for (var i=0;i<3;i++){
+        for (var j=0;j<3;j++){
+          document.getElementById("r_a"+(i+1)+"-f"+(j+1)).innerHTML = res_tabla[i][j].toFixed(3);
+        }
+      }
+
+      var sum = 0.0;
+      for (var i=0;i<3;i++){
+        document.getElementById("r"+(i+1)).innerHTML = res_final[i].toFixed(3);
+        sum+=res_final[i];
+      }
+      document.getElementById("r4").innerHTML = sum.toFixed(3)+"%";
+
+
+      for (var i=0;i<3;i++){
+        document.getElementById("r_a4"+"-f"+(i+1)).innerHTML = rec[i];
+      }
+
+      console.log(res_tabla);
+      console.log(res_final);
+
+    };
+  </script>
+
+  </head>
+  <body>
+    <header id="header" class="header background"> <!-- header -->
+      <div class="contenedor">
+        <nav class="menu"> <!-- menu -->
+          <ul>
+            <li>
+              <a href="index.html">Inicio</a>
+            </li>
+            <li>
+              <a href="nosotros.html">Nosotros</a>
+            </li>
+            <li>
+              <a href="clientes.html">Clientes</a>
+            </li>
+            <li>
+              <a href="contactanos.html">Contáctanos</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+    
+    <form method="post" action="">
+    <section class="tabla">
+      <div class="contenedor">
+        <table>
+          <thead>
+            <tr>
+              <th>Alimentos</th>
+              <th>Factor 1</th>
+              <th>Factor 2</th>
+              <th>Factor 3</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Alimento 1</td>
+              <td> <input type="text" id="a1-f1" value="20" size="5"></td>
+              <td> <input type="text" id="a1-f2" value="30" size="5"></td>
+              <td> <input type="text" id="a1-f3" value="10" size="5"></td>
+            </tr>
+            <tr>
+              <td>Alimento 2</td>
+              <td> <input type="text" id="a2-f1" value="40" size="5"></td>
+              <td> <input type="text" id="a2-f2" value="80" size="5"></td>
+              <td> <input type="text" id="a2-f3" value="0" size="5"></td>
+            </tr>
+            <tr>
+              <td>Alimento 3</td>
+              <td> <input type="text" id="a3-f1" value="90" size="5"></td>
+              <td> <input type="text" id="a3-f2" value="10" size="5"></td>
+              <td> <input type="text" id="a3-f3" value="0" size="5"></td>
+            </tr>
+            <tr>
+              <td>Recomendación</td>
+              <td> <input type="text" id="r4-f1" value="10" size="5"></td>
+              <td> <input type="text" id="r4-f2" value="20" size="5"></td>
+              <td> <input type="text" id="r4-f3" value="70" size="5"></td>
+            </tr>
+          </tbody>
+        </table><br>
+        <div>
+          <a class="button" onclick="recetame()">Recétame</a><!-- boton -->
+        </div><br>
+
+        <h1>Hola amig@</h1>
+        <h3>Tu dieta debe ser</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Alimentos</th>
+              <th>Factor 1 %</th>
+              <th>Factor 2 %</th>
+              <th>Factor 3 %</th>
+              <th>Total %</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Alimento 1</td>
+              <td id="r_a1-f1"></td>
+              <td id="r_a1-f2"></td>
+              <td id="r_a1-f3"></td>
+              <td id="r1"></td>
+            </tr>
+            <tr>
+              <td>Alimento 2</td>
+              <td id="r_a2-f1"></td>
+              <td id="r_a2-f2"></td>
+              <td id="r_a2-f3"></td>
+              <td id="r2"></td>
+            </tr>
+            <tr>
+              <td>Alimento 3</td>
+              <td id="r_a3-f1"></td>
+              <td id="r_a3-f2"></td>
+              <td id="r_a3-f3"></td>
+              <td id="r3"></td>
+            </tr>
+            <tr>
+              <td>Recomendación</td>
+              <td id="r_a4-f1"></td>
+              <td id="r_a4-f2"></td>
+              <td id="r_a4-f3"></td>
+              <td id="r4"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    </form>
+
+    <footer class="footer">
+      <div class="contenedor">
+        <div class="contacto">
+          <img src="images/logo-blanco.png" alt="logotipo blanco"/>
+          <a href="tel:926589484"><strong>Telefono</strong> <span>926589484</span></a>
+          <a href="mailto:rosario@nutricionista.com"><strong>E-mail</strong> <span>rosario@nutricionista.com</span></a>
+        </div>
+        <form class="formulario">
+          <div class="col1">
+            <label for="nombre">Nombre</label>
+            <input type="text" required id="nombre" name="nombre"/>
+            <label for="email">E-mail</label>
+            <input type="email" required id="email" name="email"/>
+            <label for="sexo">Sexo</label>
+            <div class="sexo">
+              <label for="mujer">
+                <input type="radio" id="mujer" checked name="sexo" value="mujer"> mujer
+              </label>
+              <label for="hombre">
+                <input type="radio" id="hombre" name="sexo" value="hombre"> hombre
+              </label>
+            </div>
+            <label for="interes">Intereses</label>
+            <div class="intereses">              
+              <label for="cotizacion">
+                <input type="checkbox" checked id="cotizacion" name="intereses" value="cotizacion"> Cotización
+              </label>
+              <label for="opinion">
+                <input type="checkbox" id="opinion" name="intereses" value="opinion"> Opinion
+              </label>
+            </div>
+          </div>
+          <div class="col2">
+            <label for="comentarios">Comentarios</label>
+            <textarea name="comantarios" id="comentarios" cols="30" rows="7"></textarea>
+            <input type="submit" value="Enviar" class="button"/>
+          </div>
+        </form>
+      </div>
+    </footer>
+  </body>
+</html>
